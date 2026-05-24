@@ -1,0 +1,3282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolarPro PH — Premium Solar Solutions for the Philippines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --surface: #f7f9fb;
+  --surface-dim: #d8dadc;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f2f4f6;
+  --surface-container: #eceef0;
+  --surface-container-high: #e6e8ea;
+  --on-surface: #191c1e;
+  --on-surface-variant: #44474d;
+  --outline: #75777e;
+  --outline-variant: #c5c6cd;
+  --primary: #1B2B4B;
+  --on-primary: #ffffff;
+  --primary-container: #1B2B4B;
+  --on-primary-container: #8A9FBF;
+  --secondary: #C2560B;
+  --on-secondary: #ffffff;
+  --secondary-container: #F97316;
+  --on-secondary-container: #7C3510;
+  --tertiary-container: #10B981;
+  --on-tertiary: #ffffff;
+  --error: #ba1a1a;
+  --background: #f7f9fb;
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  --shadow-card: 0 4px 24px 0 rgba(13,28,50,0.06), 0 1px 4px 0 rgba(13,28,50,0.04);
+  --shadow-elevated: 0 8px 40px 0 rgba(13,28,50,0.10), 0 2px 8px 0 rgba(13,28,50,0.06);
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--on-surface);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== TYPOGRAPHY ===== */
+.display-lg {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+.headline-lg {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+.headline-md {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+.body-lg { font-size: 18px; line-height: 28px; }
+.label-md {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.metric-xl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .display-lg { font-size: 32px; line-height: 40px; letter-spacing: -0.01em; }
+  .headline-lg { font-size: 24px; line-height: 32px; }
+  .metric-xl { font-size: 28px; line-height: 36px; }
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-container);
+  color: var(--on-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: var(--transition);
+}
+.btn-primary:hover::after { background: rgba(255,255,255,0.1); }
+.btn-primary:hover { box-shadow: 0 0 0 4px rgba(253,118,26,0.2), 0 4px 12px rgba(253,118,26,0.3); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--on-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+
+/* ===== STATUS CHIP ===== */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.chip-green { background: rgba(0,150,104,0.12); color: #007a54; }
+.chip-orange { background: rgba(253,118,26,0.12); color: var(--secondary); }
+.chip-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0;
+  transition: var(--transition);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 64px;
+  transition: var(--transition);
+}
+.nav.scrolled .nav-inner {
+  background: rgba(27,43,75,0.97);
+  backdrop-filter: blur(16px);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.2);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-icon {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.nav-logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.nav-logo-text span { color: var(--secondary-container); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  transition: var(--transition);
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta { display: flex; align-items: center; gap: 16px; }
+.nav-cta .btn-primary { padding: 10px 20px; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-inner { padding: 16px; }
+  .nav.scrolled .nav-inner { padding: 12px 16px; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 80px 0;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(10,17,40,0.97) 35%,
+      rgba(10,17,40,0.70) 100%
+    ),
+    url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1920&q=80');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse,
+    rgba(249,115,22,0.20) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-bg-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.hero-bg { display: none; }
+.hero-grid-pattern {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(255,190,80,0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,190,80,0.05) 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 55%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 55%, black 100%);
+}
+.hero-streak {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 80% 50%, rgba(249,115,22,0.15) 0%, transparent 60%);
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+.hero-content {
+  width: 100%; position: relative; z-index: 1;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 60px; align-items: center; width: 100%;
+}
+
+/* ── Left: text ── */
+.hero-badge-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.28);
+  border-radius: var(--radius-full); padding: 6px 14px; margin-bottom: 20px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; background: #f97316; border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.hero-badge-text {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #f97316;
+}
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.025em;
+  color: #fff; margin-bottom: 16px;
+}
+.hero-title .pct {
+  display: block;
+  font-size: clamp(48px, 6vw, 80px);
+  background: linear-gradient(90deg, #f97316 0%, #ffb347 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.05; color: #f97316;
+}
+.hero-subtitle {
+  font-size: 16px; line-height: 26px; color: rgba(255,255,255,0.55);
+  margin-bottom: 28px; max-width: 440px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-trusted { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-trusted-label {
+  font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em; white-space: nowrap;
+}
+.hero-trust-badges { display: flex; gap: 7px; flex-wrap: wrap; }
+.hero-trust-badge {
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5);
+  padding: 4px 10px; border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-sm); letter-spacing: 0.03em;
+}
+
+/* ── Right: Savings Card ── */
+.savings-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 26px 22px 22px;
+  box-shadow: 0 28px 64px rgba(0,0,0,0.55);
+}
+.sc-title {
+  font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700;
+  color: #fff; margin-bottom: 20px;
+}
+.sc-input-group { margin-bottom: 16px; }
+.sc-label-row {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+}
+.sc-label {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.58);
+  display: flex; align-items: center; gap: 5px;
+}
+.sc-info-dot {
+  width: 15px; height: 15px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.4);
+  font-size: 9px; font-weight: 800; display: inline-flex;
+  align-items: center; justify-content: center; cursor: default;
+}
+.sc-bill-value {
+  font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: #fff;
+}
+/* Custom slider */
+.sc-track {
+  position: relative; height: 4px; background: rgba(255,255,255,0.12);
+  border-radius: var(--radius-full); margin-bottom: 5px;
+}
+.sc-track-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; background: #f97316;
+  border-radius: var(--radius-full); pointer-events: none; transition: width 0.04s;
+}
+.sc-track input[type="range"] {
+  position: absolute; top: 50%; left: 0; width: 100%; height: 20px;
+  -webkit-appearance: none; appearance: none; background: transparent;
+  cursor: pointer; outline: none; transform: translateY(-50%); margin: 0;
+}
+.sc-track input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px; background: #fff;
+  border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 0 0 3px rgba(249,115,22,0.28);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.sc-track input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.18); box-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 0 0 4px rgba(249,115,22,0.4);
+}
+.sc-track input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; background: #fff; border: none;
+  border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.45); cursor: pointer;
+}
+.sc-range-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 3px;
+}
+/* Utility dropdown */
+.sc-select {
+  width: 100%; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
+  padding: 11px 36px 11px 14px; font-family: 'Inter', sans-serif;
+  font-size: 14px; font-weight: 600; color: #fff;
+  appearance: none; -webkit-appearance: none; cursor: pointer; outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  transition: border-color 0.2s;
+}
+.sc-select:focus { border-color: #f97316; outline: none; }
+.sc-select option { background: #0F1B2E; color: #fff; }
+/* 2×2 metrics */
+.sc-metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0;
+}
+.sc-metric {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 14px 12px 12px;
+}
+.sc-metric-label {
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.42);
+  margin-bottom: 6px; display: flex; align-items: center; gap: 4px;
+}
+.sc-metric-info {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35);
+  font-size: 9px; font-weight: 800; display: inline-flex;
+  align-items: center; justify-content: center;
+}
+.sc-metric-value {
+  font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700;
+  line-height: 1; color: #fff;
+}
+.sc-metric-value.green { color: #22c55e; }
+.sc-metric-value.orange { color: #f97316; }
+/* CTA */
+.sc-cta {
+  width: 100%; background: #f97316; color: #fff; border: none;
+  border-radius: 12px; padding: 14px 20px; font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-bottom: 10px;
+}
+.sc-cta:hover { background: #e8680a; box-shadow: 0 6px 24px rgba(249,115,22,0.42); transform: translateY(-1px); }
+.sc-cta:active { transform: translateY(0); }
+.sc-disclaimer {
+  text-align: center; font-size: 11px; color: rgba(255,255,255,0.3); line-height: 18px;
+}
+
+/* Scroll indicator */
+.hero-scroll-down {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  cursor: pointer; z-index: 2; opacity: 0.45; transition: opacity 0.2s;
+}
+.hero-scroll-down:hover { opacity: 0.75; }
+.scroll-mouse {
+  width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 12px; display: flex; align-items: flex-start;
+  justify-content: center; padding-top: 5px;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: rgba(255,255,255,0.5);
+  border-radius: 2px; animation: scrollBounce 2s infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(7px); opacity: 0.3; }
+}
+.scroll-label { font-size: 10px; color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; }
+
+@media (max-width: 1100px) {
+  .hero-grid { grid-template-columns: 1fr 380px; gap: 40px; }
+  .hero-title { font-size: 44px; }
+  .hero-title .pct { font-size: 56px; }
+}
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .savings-card { max-width: 480px; }
+  .hero-title { font-size: 38px; }
+  .hero-title .pct { font-size: 50px; }
+  .hero-content { padding: 44px 0 80px; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 32px; }
+  .hero-title .pct { font-size: 44px; }
+  .hero-content { padding: 36px 0 72px; }
+  .hero-actions { flex-direction: column; }
+  .sc-metric-value { font-size: 20px; }
+}
+
+/* ===== METRICS BAR ===== */
+.metrics-bar {
+  background: #0F1B2E;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0;
+}
+.metrics-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.metric-item {
+  padding: 32px 24px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.metric-item:last-child { border-right: none; }
+.metric-item-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-item-value .accent { color: var(--secondary-container); }
+.metric-item-value .green { color: #22c55e; }
+.metric-item-label { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 500; }
+
+@media (max-width: 768px) {
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .metric-item:nth-child(2) { border-right: none; }
+  .metric-item { padding: 24px 16px; }
+  .metric-item-value { font-size: 24px; }
+}
+
+/* ===== SECTIONS ===== */
+.section { padding: 100px 0; }
+.section-sm { padding: 60px 0; }
+.section-dark {
+  background: var(--primary);
+  color: #fff;
+}
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary-container);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+  margin-bottom: 16px;
+}
+.section-dark .section-title { color: #fff; }
+.section-desc {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--on-surface-variant);
+  max-width: 560px;
+}
+.section-dark .section-desc { color: rgba(255,255,255,0.6); }
+.section-header { margin-bottom: 60px; }
+.section-header.center { text-align: center; }
+.section-header.center .section-desc { margin: 0 auto; }
+
+/* ===== VALUE PROPS ===== */
+#features {
+  background: linear-gradient(to bottom, #0F1B2E 0%, #121E35 100%);
+}
+#features .section-label { color: var(--secondary-container); }
+#features .section-title { color: #fff; font-weight: 700; }
+#features .section-desc { color: rgba(255,255,255,0.6); }
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.value-card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 32px;
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.value-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.15);
+  transform: scale(1.02);
+}
+.value-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.value-icon-orange { background: rgba(253,118,26,0.15); }
+.value-icon-green { background: rgba(0,150,104,0.15); }
+.value-icon-navy { background: rgba(255,255,255,0.08); }
+.value-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.value-card-desc { font-size: 14px; line-height: 22px; color: rgba(255,255,255,0.65); }
+
+@media (max-width: 768px) {
+  .value-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .value-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== SOLAR CALCULATOR ===== */
+.calculator-section {
+  background: var(--primary);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.calculator-section::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(253,118,26,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.calculator-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,150,104,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.calc-inputs {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+}
+.calc-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.calc-subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 36px;
+}
+
+/* Location selector */
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.location-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+.location-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+.location-btn.active {
+  background: rgba(253,118,26,0.15);
+  border-color: var(--secondary-container);
+}
+.location-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 2px;
+}
+.location-rate {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+.location-btn.active .location-rate { color: rgba(253,118,26,0.8); }
+
+/* Input group */
+.input-group {
+  margin-bottom: 28px;
+}
+.input-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.input-label-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.input-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+.input-value .unit { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; margin-left: 3px; }
+
+/* Range slider */
+.range-track {
+  position: relative;
+  height: 6px;
+  background: rgba(255,255,255,0.12);
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+.range-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: var(--secondary-container);
+  border-radius: var(--radius-full);
+  transition: width 0.05s;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: transparent;
+  position: absolute;
+  top: 0; left: 0;
+  cursor: pointer;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; height: 24px;
+  background: var(--secondary-container);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(253,118,26,0.5), 0 0 0 3px rgba(253,118,26,0.2);
+  transition: var(--transition);
+  margin-top: -9px;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px rgba(253,118,26,0.6), 0 0 0 5px rgba(253,118,26,0.15);
+  transform: scale(1.1);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 24px; height: 24px;
+  background: var(--secondary-container);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 8px rgba(253,118,26,0.5);
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track { background: transparent; height: 6px; border-radius: var(--radius-full); }
+input[type="range"]::-moz-range-track { background: transparent; height: 6px; border-radius: var(--radius-full); }
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 4px;
+}
+
+/* Calculator results */
+.calc-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.results-main {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+}
+.results-headline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+.results-hero-metric {
+  margin-bottom: 28px;
+}
+.results-hero-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.results-hero-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #00c98a;
+  transition: var(--transition);
+}
+.results-hero-value .peso { font-size: 28px; }
+.results-hero-sub {
+  font-size: 13px;
+  color: rgba(0,201,138,0.6);
+  margin-top: 4px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.result-item {
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+.result-item-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 6px;
+}
+.result-item-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  transition: var(--transition);
+}
+.result-item-value.orange { color: var(--secondary-container); }
+.result-item-value.green { color: #00c98a; }
+
+/* Payback bar */
+.payback-container { margin-bottom: 0; }
+.payback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.payback-label { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.payback-value { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--secondary-container); }
+.payback-track {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.payback-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00c98a, var(--secondary-container));
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Secondary result cards */
+.results-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.result-card-sm {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+.result-card-sm:hover { border-color: rgba(255,255,255,0.15); }
+.result-card-icon { font-size: 28px; margin-bottom: 12px; }
+.result-card-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  transition: var(--transition);
+}
+.result-card-label { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; }
+
+.calc-disclaimer {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  line-height: 16px;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .results-secondary { grid-template-columns: 1fr 1fr; }
+  .location-grid { grid-template-columns: repeat(3, 1fr); }
+  .calc-inputs { padding: 24px; }
+}
+
+/* ===== HOW IT WORKS ===== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 24px);
+  right: calc(12.5% + 24px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--secondary-container), var(--tertiary-container));
+  opacity: 0.3;
+}
+.step-item { text-align: center; position: relative; }
+.step-number {
+  width: 56px; height: 56px;
+  background: var(--surface-container-lowest);
+  border: 2px solid var(--outline-variant);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+.step-icon {
+  font-size: 22px;
+}
+.step-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: 10px;
+}
+.step-desc { font-size: 14px; color: var(--on-surface-variant); line-height: 22px; }
+
+@media (max-width: 768px) {
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid::before { display: none; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== SAVINGS BREAKDOWN ===== */
+.savings-section { background: var(--surface-container-low); }
+.savings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.savings-feature-list { list-style: none; margin-top: 32px; }
+.savings-feature {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.savings-feature:last-child { border-bottom: none; }
+.savings-feature-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.savings-feature-icon.green { background: rgba(0,150,104,0.1); }
+.savings-feature-icon.orange { background: rgba(253,118,26,0.1); }
+.savings-feature-body {}
+.savings-feature-title { font-weight: 600; font-size: 15px; color: var(--on-surface); margin-bottom: 4px; }
+.savings-feature-desc { font-size: 14px; color: var(--on-surface-variant); line-height: 20px; }
+
+.ph-info-card {
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--shadow-elevated);
+}
+.ph-info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.ph-flag { font-size: 24px; }
+.ph-info-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.ph-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.ph-stat-row:last-of-type { border-bottom: none; margin-bottom: 20px; }
+.ph-stat-label { font-size: 14px; color: var(--on-surface-variant); }
+.ph-stat-value { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--on-surface); }
+.ph-stat-value.green { color: var(--tertiary-container); }
+.ph-nm-box {
+  background: rgba(0,150,104,0.06);
+  border: 1px solid rgba(0,150,104,0.2);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  line-height: 20px;
+}
+.ph-nm-box strong { color: var(--tertiary-container); }
+
+@media (max-width: 768px) {
+  .savings-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { background: var(--surface); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testimonial-card {
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  border: 1px solid var(--outline-variant);
+}
+.testimonial-card:hover { box-shadow: var(--shadow-elevated); transform: translateY(-2px); }
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.star { color: var(--secondary-container); font-size: 16px; }
+.testimonial-quote {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--on-surface-variant);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.avatar-navy { background: var(--primary); }
+.avatar-orange { background: var(--secondary-container); }
+.avatar-green { background: var(--tertiary-container); }
+.testimonial-name { font-weight: 600; font-size: 15px; color: var(--on-surface); }
+.testimonial-location { font-size: 13px; color: var(--on-surface-variant); }
+.testimonial-savings {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,150,104,0.08);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #007a54;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== FAQ ===== */
+.faq-section { background: var(--surface-container-low); }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--outline-variant);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+.faq-question-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--outline-variant);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--on-surface-variant);
+  transition: var(--transition);
+}
+.faq-item.open .faq-icon { background: var(--secondary-container); border-color: var(--secondary-container); color: #fff; transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.faq-item.open .faq-answer { max-height: 200px; }
+.faq-answer-text {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--on-surface-variant);
+  padding-bottom: 24px;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(253,118,26,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-label { color: var(--secondary-container); margin-bottom: 16px; }
+.cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.cta-desc { font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+.cta-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.cta-note { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 20px; }
+
+@media (max-width: 768px) {
+  .cta-title { font-size: 28px; }
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #0F1B2E;
+  color: rgba(255,255,255,0.6);
+  padding: 60px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand {}
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-desc { font-size: 14px; line-height: 22px; max-width: 280px; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.social-link {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.social-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.footer-col-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: var(--transition);
+}
+.footer-links a:hover { color: #fff; }
+.footer-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copyright { font-size: 13px; }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { font-size: 13px; color: rgba(255,255,255,0.4); transition: var(--transition); }
+.footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: span 2; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: span 1; }
+}
+
+/* ===== ASSESSMENT MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+  padding: 20px;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  background: #1B2B4B;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(28px) scale(0.98);
+  transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+.modal::-webkit-scrollbar { width: 4px; }
+.modal::-webkit-scrollbar-track { background: transparent; }
+.modal::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
+
+@media (max-width: 600px) {
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    max-height: 92vh;
+    transform: translateY(100%);
+    transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+  }
+  .modal-overlay.active .modal { transform: translateY(0); }
+}
+
+.modal-progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+}
+.modal-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fd761a 0%, #ffb347 100%);
+  border-radius: 0;
+  transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px 0;
+}
+.modal-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--secondary-container);
+}
+.modal-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  transition: var(--transition);
+}
+.modal-close:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
+.modal-body { padding: 16px 28px 28px; }
+.modal-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.modal-subtitle { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 24px; line-height: 20px; }
+
+/* Form elements */
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 7px;
+}
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  transition: var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.22); }
+.form-input:focus {
+  border-color: var(--secondary-container);
+  background: rgba(255,255,255,0.09);
+  box-shadow: 0 0 0 3px rgba(253,118,26,0.14);
+}
+.form-input.error { border-color: #ff5252; box-shadow: 0 0 0 3px rgba(255,82,82,0.12); }
+.form-error { font-size: 12px; color: #ff7b7b; margin-top: 5px; display: none; }
+.form-error.show { display: block; }
+select.form-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+select.form-input option { background: #1B2B4B; color: #fff; }
+select.form-input optgroup { background: #091525; color: rgba(255,255,255,0.5); font-style: normal; font-size: 11px; }
+
+.toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.11);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.toggle-btn:hover { background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.22); }
+.toggle-btn.active {
+  background: rgba(253,118,26,0.14);
+  border-color: var(--secondary-container);
+  color: var(--secondary-container);
+  font-weight: 600;
+}
+
+/* Modal summary card */
+.modal-summary-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.modal-summary-hero {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.modal-summary-hero-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 4px; font-weight: 500; }
+.modal-summary-hero-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #00c98a;
+  line-height: 1;
+}
+.modal-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.modal-summary-item {}
+.modal-summary-item-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 3px; }
+.modal-summary-item-value { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #fff; line-height: 1.2; }
+.modal-summary-item-value.green { color: #00c98a; }
+.modal-summary-item-value.orange { color: var(--secondary-container); }
+
+/* Timeline */
+.modal-timeline { margin-bottom: 22px; }
+.modal-timeline-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+.timeline-list { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 22px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.07);
+}
+.timeline-item:last-child::before { display: none; }
+.timeline-dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(253,118,26,0.15);
+  border: 2px solid var(--secondary-container);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+}
+.timeline-dot.green { background: rgba(0,201,138,0.12); border-color: #00c98a; }
+.timeline-body {}
+.timeline-step-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.timeline-step-time { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+/* Confirmation icon */
+.modal-confirm-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(0,201,138,0.12);
+  border: 2px solid #00c98a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 20px;
+}
+
+/* Modal footer buttons */
+.modal-footer { display: flex; gap: 10px; margin-top: 20px; }
+.modal-btn-back {
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  color: rgba(255,255,255,0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.modal-btn-back:hover { background: rgba(255,255,255,0.09); color: #fff; }
+.modal-btn-next {
+  flex: 1;
+  padding: 14px 20px;
+  background: var(--secondary-container);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.modal-btn-next:hover:not(:disabled) { opacity: 0.9; box-shadow: 0 4px 16px rgba(253,118,26,0.3); transform: translateY(-1px); }
+.modal-btn-next:active:not(:disabled) { transform: translateY(0); }
+.modal-btn-next:disabled { opacity: 0.45; cursor: not-allowed; }
+.modal-btn-close {
+  width: 100%;
+  padding: 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  color: rgba(255,255,255,0.75);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.modal-btn-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+/* Inline spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ===== UTILITIES ===== */
+.text-green { color: var(--tertiary-container); }
+.text-orange { color: var(--secondary-container); }
+.text-white { color: #fff; }
+.divider { height: 1px; background: var(--outline-variant); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+/* Navigation */
+.nav-links a          { font-size: clamp(12px, 1.2vw, 15px); }
+.btn-primary          { font-size: clamp(13px, 1.2vw, 15px); }
+.btn-ghost            { font-size: clamp(13px, 1.2vw, 15px); }
+
+/* Hero */
+.hero-badge-text      { font-size: clamp(10px, 1vw, 13px); }
+.hero-title           { font-size: clamp(32px, 5vw, 72px); line-height: 1.1; }
+.hero-title .pct      { font-size: clamp(40px, 6vw, 80px); line-height: 1.05; }
+.hero-subtitle        { font-size: clamp(13px, 1.5vw, 18px); line-height: 1.7; }
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost { font-size: clamp(13px, 1.3vw, 16px); }
+.hero-trusted-label   { font-size: clamp(10px, 1vw, 13px); }
+.hero-trust-badge     { font-size: clamp(10px, 1vw, 13px); }
+
+/* Savings Card */
+.sc-title             { font-size: clamp(16px, 1.8vw, 22px); }
+.sc-label             { font-size: clamp(10px, 1vw, 13px); }
+.sc-info-dot          { font-size: clamp(9px, 0.9vw, 11px); }
+.sc-bill-value        { font-size: clamp(14px, 1.5vw, 18px); }
+.sc-metric-label      { font-size: clamp(10px, 1vw, 13px); }
+.sc-metric-value      { font-size: clamp(20px, 2.2vw, 28px); }
+.sc-range-labels      { font-size: clamp(10px, 1vw, 12px); }
+.sc-select            { font-size: clamp(12px, 1.2vw, 14px); }
+.sc-cta               { font-size: clamp(13px, 1.3vw, 16px); }
+.sc-disclaimer        { font-size: clamp(10px, 1vw, 12px); }
+
+/* Stats Bar */
+.metric-item-value    { font-size: clamp(24px, 3vw, 42px); }
+.metric-item-label    { font-size: clamp(11px, 1vw, 14px); line-height: 1.4; }
+
+/* Sections — shared labels/headings/body */
+.section-label        { font-size: clamp(10px, 1vw, 13px); }
+.section-title        { font-size: clamp(24px, 3.5vw, 48px); line-height: 1.1; }
+.section-desc         { font-size: clamp(13px, 1.5vw, 18px); line-height: 1.7; }
+
+/* Why SolarPro PH — feature cards */
+.value-card-title     { font-size: clamp(15px, 1.5vw, 20px); }
+.value-card-desc      { font-size: clamp(12px, 1.2vw, 15px); line-height: 1.6; }
+
+/* Calculator Section */
+.calc-title           { font-size: clamp(18px, 2vw, 28px); line-height: 1.2; }
+.calc-subtitle        { font-size: clamp(11px, 1vw, 14px); }
+.input-label-text     { font-size: clamp(11px, 1vw, 13px); letter-spacing: 0.06em; }
+.input-value          { font-size: clamp(16px, 1.8vw, 20px); }
+.input-value .unit    { font-size: clamp(11px, 1vw, 13px); }
+.results-hero-value   { font-size: clamp(28px, 3.5vw, 48px); line-height: 1; }
+.results-hero-value .peso { font-size: clamp(18px, 2vw, 28px); }
+.result-item-value    { font-size: clamp(18px, 2vw, 26px); }
+.result-item-label    { font-size: clamp(10px, 1vw, 12px); }
+.result-card-value    { font-size: clamp(16px, 1.8vw, 22px); }
+.result-card-label    { font-size: clamp(10px, 1vw, 12px); }
+.payback-value        { font-size: clamp(13px, 1.3vw, 16px); }
+.payback-label        { font-size: clamp(10px, 1vw, 12px); }
+.results-headline     { font-size: clamp(10px, 1vw, 14px); }
+.results-hero-label   { font-size: clamp(11px, 1vw, 14px); }
+.results-hero-sub     { font-size: clamp(11px, 1vw, 13px); }
+.calc-disclaimer      { font-size: clamp(10px, 0.9vw, 12px); }
+.location-name        { font-size: clamp(11px, 1.1vw, 13px); }
+.location-rate        { font-size: clamp(9px, 0.9vw, 11px); }
+
+/* How It Works */
+.step-title           { font-size: clamp(13px, 1.4vw, 16px); }
+.step-desc            { font-size: clamp(12px, 1.2vw, 14px); line-height: 1.6; }
+
+/* PH Market / Savings Section */
+.savings-feature-title  { font-size: clamp(13px, 1.4vw, 16px); }
+.savings-feature-desc   { font-size: clamp(12px, 1.2vw, 14px); line-height: 1.6; }
+.ph-info-title          { font-size: clamp(14px, 1.5vw, 18px); }
+.ph-stat-label          { font-size: clamp(12px, 1.2vw, 14px); }
+.ph-stat-value          { font-size: clamp(13px, 1.3vw, 16px); font-weight: 700; }
+.ph-nm-box              { font-size: clamp(11px, 1.1vw, 13px); line-height: 1.6; }
+
+/* Testimonials */
+.testimonial-quote    { font-size: clamp(13px, 1.3vw, 16px); line-height: 1.7; }
+.testimonial-name     { font-size: clamp(13px, 1.3vw, 15px); }
+.testimonial-location { font-size: clamp(11px, 1vw, 13px); }
+.testimonial-savings  { font-size: clamp(11px, 1vw, 13px); }
+
+/* FAQ */
+.faq-question-text    { font-size: clamp(14px, 1.5vw, 18px); line-height: 1.4; }
+.faq-answer-text      { font-size: clamp(12px, 1.2vw, 15px); line-height: 1.6; }
+
+/* CTA Section */
+.cta-title            { font-size: clamp(26px, 3.5vw, 48px); line-height: 1.1; }
+.cta-desc             { font-size: clamp(13px, 1.5vw, 18px); line-height: 1.7; }
+.cta-note             { font-size: clamp(11px, 1vw, 13px); }
+
+/* Footer */
+.footer-col-title     { font-size: clamp(11px, 1vw, 13px); }
+.footer-links a       { font-size: clamp(11px, 1vw, 14px); line-height: 1.6; }
+.footer-desc          { font-size: clamp(11px, 1vw, 14px); line-height: 1.6; }
+.footer-copyright     { font-size: clamp(11px, 1vw, 13px); }
+.footer-legal a       { font-size: clamp(11px, 1vw, 13px); }
+.nav-logo-text        { font-size: clamp(15px, 1.5vw, 20px); }
+
+/* Modal */
+.modal-title          { font-size: clamp(18px, 2vw, 24px); line-height: 1.3; }
+.modal-subtitle       { font-size: clamp(12px, 1.2vw, 15px); line-height: 1.6; }
+.form-label           { font-size: clamp(10px, 1vw, 12px); }
+.form-input           { font-size: clamp(13px, 1.3vw, 16px); }
+.toggle-btn           { font-size: clamp(12px, 1.2vw, 14px); }
+.modal-step-label     { font-size: clamp(10px, 1vw, 12px); }
+.modal-btn-next,
+.modal-btn-back,
+.modal-btn-close      { font-size: clamp(13px, 1.3vw, 15px); }
+.timeline-step-title  { font-size: clamp(12px, 1.3vw, 15px); }
+.timeline-step-time   { font-size: clamp(11px, 1vw, 13px); }
+.modal-summary-hero-value { font-size: clamp(26px, 3vw, 40px); }
+.modal-summary-item-value { font-size: clamp(14px, 1.6vw, 18px); }
+.modal-summary-item-label { font-size: clamp(10px, 1vw, 12px); }
+
+/* ===== SECTION DARK OVERRIDES ===== */
+
+/* ── How It Works ── */
+#how-it-works {
+  background: #0F1B2E;
+}
+#how-it-works .section-label { color: var(--secondary-container); }
+#how-it-works .section-title { color: #fff; font-weight: 700; }
+#how-it-works .section-desc  { color: rgba(255,255,255,0.6); }
+
+.steps-grid::before {
+  background: linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15));
+  opacity: 1;
+}
+.step-number {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: none;
+  color: #fff;
+}
+.step-title { color: #fff; font-weight: 600; }
+.step-desc  { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+/* ── Savings / PH Market — gradient transition + dark bg ── */
+.savings-section {
+  background: linear-gradient(to bottom, #0F1B2E 0%, #121E35 100%);
+}
+.savings-section .section-label { color: var(--secondary-container); }
+.savings-section .section-title { color: #fff; font-weight: 700; }
+.savings-section .section-desc  { color: rgba(255,255,255,0.7); }
+
+/* Feature list */
+.savings-feature { border-bottom-color: rgba(255,255,255,0.06); }
+.savings-feature-icon.green  { background: rgba(253,118,26,0.15); }
+.savings-feature-icon.orange { background: rgba(253,118,26,0.15); }
+.savings-feature-title { color: #fff; font-weight: 600; }
+.savings-feature-desc  { color: rgba(255,255,255,0.6); }
+
+/* PH Solar Facts card */
+.ph-info-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.ph-info-title  { color: #fff; }
+.ph-stat-row    { border-bottom-color: rgba(255,255,255,0.06); }
+.ph-stat-label  { color: rgba(255,255,255,0.6); }
+.ph-stat-value  { color: #fff; font-weight: 500; }
+.ph-stat-value.green { color: #22c55e; }
+
+/* Net Metering Credit box */
+.ph-nm-box {
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.25);
+  color: rgba(255,255,255,0.7);
+}
+.ph-nm-box strong { color: #22c55e; }
+
+/* ── Footer new content ── */
+.footer-accred {
+  font-size: clamp(10px, 1vw, 11px);
+  color: rgba(255,255,255,0.28);
+  margin: 8px 0 16px;
+  line-height: 1.4;
+}
+.footer-contact-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.footer-contact-list li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: clamp(12px, 1.1vw, 13px);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.fc-icon { flex-shrink: 0; width: 18px; text-align: center; margin-top: 1px; }
+.footer-contact-list a { color: rgba(255,255,255,0.5); transition: var(--transition); }
+.footer-contact-list a:hover { color: #f97316; }
+.footer-check-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 9px;
+}
+.footer-check-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: clamp(12px, 1.1vw, 13px);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.footer-check-list li::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 11px;
+}
+.footer-tagline {
+  font-size: clamp(11px, 1vw, 13px);
+  color: rgba(255,255,255,0.38);
+}
+.footer-tagline-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-top: 3px;
+}
+.footer-legal-sep {
+  color: rgba(255,255,255,0.2);
+  user-select: none;
+}
+@media (max-width: 768px) { .footer-tagline { display: none; } }
+
+/* ── Testimonials ── */
+.testimonials-section {
+  background: #0F1B2E;
+}
+.testimonials-section .section-label { color: var(--secondary-container); }
+.testimonials-section .section-title  { color: #fff; font-weight: 700; }
+.testimonials-section .section-desc   { color: rgba(255,255,255,0.6); }
+
+.testimonial-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.testimonial-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: none;
+  transform: translateY(-4px);
+}
+.star                  { color: #f97316; }
+.testimonial-quote     { color: rgba(255,255,255,0.8); font-size: 14px; }
+.testimonial-name      { color: #fff; font-weight: 600; }
+.testimonial-location  { color: rgba(255,255,255,0.5); font-size: 12px; }
+.testimonial-savings {
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.25);
+  color: #22c55e;
+  font-size: 12px;
+}
+
+/* ── FAQ ── */
+.faq-section {
+  background: linear-gradient(to bottom, #0F1B2E 0%, #121E35 100%);
+}
+.faq-section .section-label { color: var(--secondary-container); }
+.faq-section .section-title  { color: #fff; font-weight: 700; }
+
+.faq-item            { border-bottom-color: rgba(255,255,255,0.08); }
+.faq-question        { background: transparent; border-radius: 8px; padding-left: 8px; padding-right: 8px; transition: background 0.2s; }
+.faq-question:hover  { background: rgba(255,255,255,0.05); }
+.faq-question-text   { color: rgba(255,255,255,0.85); font-weight: 500; }
+.faq-icon            { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); background: transparent; }
+.faq-item.open .faq-question  { background: rgba(255,255,255,0.03); }
+.faq-item.open .faq-icon      { background: transparent; border-color: #f97316; color: #f97316; transform: rotate(45deg); }
+.faq-answer-text     { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; }
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="34" height="38" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nsg" x1="24" y1="1" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFD60A"/>
+              <stop offset="100%" stop-color="#F97316"/>
+            </linearGradient>
+            <clipPath id="nhc">
+              <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5"/>
+            </clipPath>
+          </defs>
+          <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5" fill="#1B2B4B"/>
+          <rect x="0" y="0" width="48" height="27" fill="url(#nsg)" clip-path="url(#nhc)"/>
+          <line x1="2" y1="32" x2="46" y2="32" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#nhc)"/>
+          <line x1="2" y1="39" x2="46" y2="39" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#nhc)"/>
+          <line x1="16" y1="27" x2="16" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#nhc)"/>
+          <line x1="24" y1="27" x2="24" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#nhc)"/>
+          <line x1="32" y1="27" x2="32" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#nhc)"/>
+          <text x="24" y="36" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,Arial,sans-serif" font-size="18" font-weight="800" fill="white">S</text>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Solar<span>Pro</span> PH</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#savings">Savings</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#calculator" class="btn-primary">Get Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg-wrap">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="hero-streak"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- LEFT: Headline + CTAs -->
+        <div>
+          <div class="hero-badge-pill">
+            <div class="hero-badge-dot"></div>
+            <span class="hero-badge-text">DOE Accredited Solar Installer</span>
+          </div>
+          <h1 class="hero-title">
+            Cut Your Electric Bill by
+            <span class="pct">Up to 90%</span>
+            With Solar Power
+          </h1>
+          <p class="hero-subtitle">
+            Premium solar solutions engineered for Philippine conditions. From Meralco service areas to provincial cooperatives — we deliver guaranteed savings backed by 25-year panel warranties.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="heroScrollToCalc()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Calculate My Savings
+            </button>
+            <button class="btn-ghost" onclick="heroScrollToHow()">
+              See How It Works
+            </button>
+          </div>
+          <div class="hero-trusted">
+            <span class="hero-trusted-label">Trusted by</span>
+            <div class="hero-trust-badges">
+              <span class="hero-trust-badge">🏛 DOE PH</span>
+              <span class="hero-trust-badge">⚖ ERC</span>
+              <span class="hero-trust-badge">🏢 DOLE</span>
+              <span class="hero-trust-badge">✓ ISO 9001</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Savings Card -->
+        <div class="savings-card">
+          <h3 class="sc-title">Your Potential Savings</h3>
+
+          <!-- Monthly Bill Slider -->
+          <div class="sc-input-group">
+            <div class="sc-label-row">
+              <span class="sc-label">
+                Monthly Bill
+                <span class="sc-info-dot" title="Your current average monthly electricity bill">i</span>
+              </span>
+              <span class="sc-bill-value" id="heroBillDisplay">₱8,000</span>
+            </div>
+            <div class="sc-track">
+              <div class="sc-track-fill" id="heroBillFill" style="width:14.3%"></div>
+              <input type="range" id="heroBillSlider"
+                min="1000" max="50000" step="500" value="8000"
+                oninput="onHeroBillInput(this.value)">
+            </div>
+            <div class="sc-range-labels"><span>₱1,000</span><span>₱50,000</span></div>
+          </div>
+
+          <!-- Utility Dropdown -->
+          <div class="sc-input-group">
+            <div class="sc-label-row">
+              <span class="sc-label">Utility</span>
+            </div>
+            <select class="sc-select" id="heroUtilitySelect" onchange="onHeroUtilityChange(this.value)">
+              <option value="meralco">⚡ Meralco (₱10.45/kWh)</option>
+              <option value="veco">⚡ VECO / Cebu (₱11.20/kWh)</option>
+              <option value="davao">⚡ Davao Light (₱10.10/kWh)</option>
+              <option value="blci">⚡ BLCI / Bacolod (₱11.80/kWh)</option>
+              <option value="cagayan">⚡ CAGELCO (₱11.50/kWh)</option>
+              <option value="other">⚡ Other / REC (₱11.00/kWh)</option>
+            </select>
+          </div>
+
+          <!-- 4 Real-Time Metrics -->
+          <div class="sc-metrics">
+            <div class="sc-metric">
+              <div class="sc-metric-label">
+                Monthly Savings
+                <span class="sc-metric-info" title="Estimated monthly reduction in your electricity bill">i</span>
+              </div>
+              <div class="sc-metric-value green" id="heroMonthlySavings">₱6,480</div>
+            </div>
+            <div class="sc-metric">
+              <div class="sc-metric-label">Annual Savings</div>
+              <div class="sc-metric-value green" id="heroAnnualSavings">₱77,760</div>
+            </div>
+            <div class="sc-metric">
+              <div class="sc-metric-label">Payback Period</div>
+              <div class="sc-metric-value orange" id="heroPayback">4.2 yrs</div>
+            </div>
+            <div class="sc-metric">
+              <div class="sc-metric-label">System Size</div>
+              <div class="sc-metric-value" id="heroSystemSize">6.5 kWp</div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <button class="sc-cta" onclick="openAssessmentModal()">
+            Get My Full Assessment — Free ›
+          </button>
+          <p class="sc-disclaimer">
+            Free assessment &nbsp;•&nbsp; No obligation &nbsp;•&nbsp; Results in 24hrs
+          </p>
+        </div>
+
+      </div><!-- /hero-grid -->
+    </div><!-- /container -->
+  </div><!-- /hero-content -->
+
+  <!-- Scroll down indicator -->
+  <div class="hero-scroll-down" onclick="heroScrollToNext()" title="Scroll down">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ===== METRICS BAR ===== -->
+<div class="metrics-bar">
+  <div class="container">
+    <div class="metrics-inner">
+      <div class="metric-item fade-up">
+        <div class="metric-item-value"><span class="accent">2,400+</span></div>
+        <div class="metric-item-label">Installations Completed</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-1">
+        <div class="metric-item-value"><span class="green">₱6,800</span></div>
+        <div class="metric-item-label">Avg. Monthly Savings</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-2">
+        <div class="metric-item-value">4.3 <span style="font-size:20px;color:var(--on-surface-variant)">yrs</span></div>
+        <div class="metric-item-label">Average Payback Period</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-3">
+        <div class="metric-item-value"><span class="green">8,200</span></div>
+        <div class="metric-item-label">Tons CO₂ Offset</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VALUE PROPS ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <div class="section-label">Why SolarPro PH</div>
+      <h2 class="section-title">Built for Philippine Realities</h2>
+      <p class="section-desc">High irradiance, typhoon-rated hardware, and local expertise — solar the way it should be done.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-up">
+        <div class="value-icon value-icon-orange">☀️</div>
+        <div class="value-card-title">Maximum PH Solar Yield</div>
+        <p class="value-card-desc">Philippines averages 4.5–5.5 peak sun hours daily — among Southeast Asia's highest irradiance. Our panel placement algorithms are calibrated for local weather data from PAG-ASA.</p>
+      </div>
+      <div class="value-card fade-up fade-up-delay-1">
+        <div class="value-icon value-icon-green">💰</div>
+        <div class="value-card-title">Net Metering Under RA 9513</div>
+        <p class="value-card-desc">Export surplus power back to your distribution utility (Meralco, VECO, DAVAO LIGHT) and earn bill credits. We handle all ERC and distribution utility interconnection permits.</p>
+      </div>
+      <div class="value-card fade-up fade-up-delay-2">
+        <div class="value-icon value-icon-navy">🛡️</div>
+        <div class="value-card-title">Typhoon-Rated Installation</div>
+        <p class="value-card-desc">All mounting systems are engineered to ASCE 7-22 wind load standards and PEC 2017 electrical code. Panels rated for 2,400 Pa wind pressure — built to survive signal #4 typhoons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLAR CALCULATOR ===== -->
+<section class="calculator-section" id="calculator">
+  <div class="container">
+    <div class="section-header center fade-up" style="margin-bottom:52px">
+      <div class="section-label" style="color:var(--secondary-container)">Philippine Solar Calculator</div>
+      <h2 class="section-title text-white">How Much Can You Save?</h2>
+      <p class="section-desc" style="margin:0 auto;color:rgba(255,255,255,0.55)">Real numbers based on your distribution utility's current rates. Updated quarterly using ERC-published tariff data.</p>
+    </div>
+    <div class="calc-grid">
+      <!-- Inputs -->
+      <div class="calc-inputs fade-up">
+        <h3 class="calc-title">Your Solar Profile</h3>
+        <p class="calc-subtitle">Adjust to match your current electricity situation</p>
+
+        <!-- Location / Utility selector -->
+        <div style="margin-bottom:8px">
+          <div class="input-label-text" style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px">Distribution Utility</div>
+          <div class="location-grid">
+            <button class="location-btn active" data-utility="meralco" data-rate="10.45" data-psh="4.5" onclick="selectUtility(this)">
+              <span class="location-name">Meralco</span>
+              <span class="location-rate">₱10.45/kWh</span>
+            </button>
+            <button class="location-btn" data-utility="veco" data-rate="11.20" data-psh="4.8" onclick="selectUtility(this)">
+              <span class="location-name">VECO / Cebu</span>
+              <span class="location-rate">₱11.20/kWh</span>
+            </button>
+            <button class="location-btn" data-utility="davao" data-rate="10.10" data-psh="5.0" onclick="selectUtility(this)">
+              <span class="location-name">Davao Light</span>
+              <span class="location-rate">₱10.10/kWh</span>
+            </button>
+            <button class="location-btn" data-utility="blci" data-rate="11.80" data-psh="4.7" onclick="selectUtility(this)">
+              <span class="location-name">BLCI / Bacolod</span>
+              <span class="location-rate">₱11.80/kWh</span>
+            </button>
+            <button class="location-btn" data-utility="cagayan" data-rate="11.50" data-psh="4.9" onclick="selectUtility(this)">
+              <span class="location-name">CAGELCO</span>
+              <span class="location-rate">₱11.50/kWh</span>
+            </button>
+            <button class="location-btn" data-utility="other" data-rate="11.00" data-psh="4.6" onclick="selectUtility(this)">
+              <span class="location-name">Other / REC</span>
+              <span class="location-rate">₱11.00/kWh</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Monthly Bill Slider -->
+        <div class="input-group">
+          <div class="input-label">
+            <span class="input-label-text">Monthly Electric Bill</span>
+            <span class="input-value">₱<span id="billDisplay">8,000</span></span>
+          </div>
+          <div class="range-track">
+            <div class="range-fill" id="billFill" style="width:37%"></div>
+            <input type="range" id="monthlyBill" min="1000" max="50000" step="500" value="8000" oninput="updateCalculator()">
+          </div>
+          <div class="range-labels"><span>₱1,000</span><span>₱50,000</span></div>
+        </div>
+
+        <!-- Roof Area -->
+        <div class="input-group">
+          <div class="input-label">
+            <span class="input-label-text">Available Roof Area</span>
+            <span class="input-value"><span id="roofDisplay">40</span><span class="unit">sqm</span></span>
+          </div>
+          <div class="range-track">
+            <div class="range-fill" id="roofFill" style="width:35%"></div>
+            <input type="range" id="roofArea" min="10" max="200" step="5" value="40" oninput="updateCalculator()">
+          </div>
+          <div class="range-labels"><span>10 sqm</span><span>200 sqm</span></div>
+        </div>
+
+        <!-- Annual rate increase info -->
+        <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-lg);padding:16px;margin-top:4px">
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px">Calculation Assumptions</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="font-size:13px;color:rgba(255,255,255,0.5)">Peak Sun Hours</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:600;text-align:right" id="pshDisplay">4.5 hrs/day</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5)">System Efficiency</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:600;text-align:right">80%</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5)">Rate Escalation</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:600;text-align:right">+3%/yr</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5)">Panel Warranty</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:600;text-align:right">25 years</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="calc-results fade-up fade-up-delay-1">
+        <div class="results-main">
+          <div class="results-headline">Your Estimated Savings</div>
+          <div class="results-hero-metric">
+            <div class="results-hero-label">25-Year Net Savings (after system cost)</div>
+            <div class="results-hero-value"><span class="peso">₱</span><span id="netSavings25">2,380,000</span></div>
+            <div class="results-hero-sub">↑ vs. continuing to pay the utility</div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-item">
+              <div class="result-item-label">Monthly Savings</div>
+              <div class="result-item-value green">₱<span id="monthlySavings">6,800</span></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">Annual Savings</div>
+              <div class="result-item-value green">₱<span id="annualSavings">81,600</span></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">System Size</div>
+              <div class="result-item-value orange"><span id="systemSize">5.5</span> kWp</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">Install Cost</div>
+              <div class="result-item-value">₱<span id="installCost">330,000</span></div>
+            </div>
+          </div>
+
+          <div class="payback-container">
+            <div class="payback-header">
+              <span class="payback-label">Payback Period</span>
+              <span class="payback-value"><span id="paybackYears">4.1</span> years</span>
+            </div>
+            <div class="payback-track">
+              <div class="payback-fill" id="paybackFill" style="width:34%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-secondary">
+          <div class="result-card-sm">
+            <div class="result-card-icon">🌱</div>
+            <div class="result-card-value" id="co2Offset">6.2</div>
+            <div class="result-card-label">Tons CO₂/yr offset</div>
+          </div>
+          <div class="result-card-sm">
+            <div class="result-card-icon">⚡</div>
+            <div class="result-card-value" id="annualProduction">8,900</div>
+            <div class="result-card-label">kWh annual production</div>
+          </div>
+          <div class="result-card-sm">
+            <div class="result-card-icon">🌳</div>
+            <div class="result-card-value" id="treesEquiv">280</div>
+            <div class="result-card-label">Trees equivalent/yr</div>
+          </div>
+          <div class="result-card-sm">
+            <div class="result-card-icon">📋</div>
+            <div class="result-card-value" id="roofPanels">22</div>
+            <div class="result-card-label">Panels needed</div>
+          </div>
+        </div>
+
+        <p class="calc-disclaimer">Estimates based on current ERC-published utility rates. Actual savings vary with consumption patterns, shading, roof orientation, and future tariff changes. Net metering credits apply to systems ≤100 kWp per ERC Resolution No. 09, Series of 2013.</p>
+
+        <button onclick="openAssessmentModal()" class="btn-primary" style="width:100%;justify-content:center;margin-top:4px">
+          Get My Detailed Assessment — Free
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">Solar in 4 Simple Steps</h2>
+      <p class="section-desc">From first call to first kilowatt — we manage every step including all government permits.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item fade-up">
+        <div class="step-number"><span class="step-icon">📞</span></div>
+        <div class="step-title">Free Site Assessment</div>
+        <p class="step-desc">Our engineers visit your site, analyze your electricity bills, and assess roof condition, orientation, and shading — at zero cost.</p>
+      </div>
+      <div class="step-item fade-up fade-up-delay-1">
+        <div class="step-number"><span class="step-icon">📐</span></div>
+        <div class="step-title">Custom System Design</div>
+        <p class="step-desc">We produce a full energy audit, 3D shading simulation, and detailed financial model showing exact savings projection over 25 years.</p>
+      </div>
+      <div class="step-item fade-up fade-up-delay-2">
+        <div class="step-number"><span class="step-icon">🔧</span></div>
+        <div class="step-title">Professional Installation</div>
+        <p class="step-desc">DOE-accredited technicians install your system in 1–3 days. All permits (BPLO, utility interconnection, ERC net metering) handled by us.</p>
+      </div>
+      <div class="step-item fade-up fade-up-delay-3">
+        <div class="step-number"><span class="step-icon">📱</span></div>
+        <div class="step-title">Monitor & Maximize</div>
+        <p class="step-desc">Real-time production monitoring via mobile app. Annual system health checks for the life of your warranty. 24/7 support line.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAVINGS / PH MARKET INFO ===== -->
+<span id="why-solar" aria-hidden="true" style="display:block;height:0;overflow:hidden;"></span>
+<section class="section savings-section" id="savings">
+  <div class="container">
+    <div class="savings-grid">
+      <div class="fade-up">
+        <div class="section-label">Why Solar Now</div>
+        <h2 class="section-title">Philippine Electricity Is Among Asia's Most Expensive</h2>
+        <p class="section-desc">At ₱10–₱12/kWh, Filipino households pay 2–3× more than our ASEAN neighbors. Solar locks in free energy for 25+ years.</p>
+        <ul class="savings-feature-list">
+          <li class="savings-feature">
+            <div class="savings-feature-icon green">📈</div>
+            <div class="savings-feature-body">
+              <div class="savings-feature-title">Electricity Rates Rise ~3% Per Year</div>
+              <div class="savings-feature-desc">ERC data shows consistent tariff increases since 2010. Every year you wait, payback takes longer and total savings shrink.</div>
+            </div>
+          </li>
+          <li class="savings-feature">
+            <div class="savings-feature-icon orange">⚡</div>
+            <div class="savings-feature-body">
+              <div class="savings-feature-title">Net Metering = Zero-Cost Export</div>
+              <div class="savings-feature-desc">Under RA 9513, excess solar power is credited at the prevailing generation rate. Daytime overproduction offsets nighttime consumption.</div>
+            </div>
+          </li>
+          <li class="savings-feature">
+            <div class="savings-feature-icon green">🏦</div>
+            <div class="savings-feature-body">
+              <div class="savings-feature-title">Best ROI of Any Home Investment</div>
+              <div class="savings-feature-desc">Average 4–5 year payback with 20+ years of free electricity after. No other home investment comes close at 15–25% IRR.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="fade-up fade-up-delay-1">
+        <div class="ph-info-card">
+          <div class="ph-info-header">
+            <span class="ph-flag">🇵🇭</span>
+            <span class="ph-info-title">Philippine Solar Facts</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">Average Solar Irradiance</span>
+            <span class="ph-stat-value green">4.5–5.5 kWh/m²/day</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">Meralco Generation Rate (2024)</span>
+            <span class="ph-stat-value">~₱8.85/kWh</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">Average All-In Bill Rate</span>
+            <span class="ph-stat-value">₱10–₱12/kWh</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">Installed Solar Capacity (DOE 2024)</span>
+            <span class="ph-stat-value green">1,900+ MW</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">Net Metering Cap (per RA 9513)</span>
+            <span class="ph-stat-value">100 kWp</span>
+          </div>
+          <div class="ph-stat-row">
+            <span class="ph-stat-label">VAT Exemption on Solar Equipment</span>
+            <span class="ph-stat-value green">Yes (RA 9513 Sec. 15)</span>
+          </div>
+          <div class="ph-nm-box">
+            <strong>Net Metering Credit:</strong> Under ERC Resolution No. 09, Series of 2013, residential solar owners receive bill credits for exported electricity at the prevailing generation charge rate. Credits roll over monthly and are settled annually.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<span id="reviews" aria-hidden="true" style="display:block;height:0;overflow:hidden;"></span>
+<section class="section testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <div class="section-label">Customer Stories</div>
+      <h2 class="section-title">Real Filipinos, Real Savings</h2>
+      <p class="section-desc">From Quezon City to Cebu City — our customers are already saving thousands every month.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"My Meralco bill went from ₱12,000 to under ₱800 a month. The system paid for itself in just over 4 years. Best investment I ever made for my family."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-navy">RC</div>
+          <div>
+            <div class="testimonial-name">Renato Cruz</div>
+            <div class="testimonial-location">Quezon City, Metro Manila</div>
+            <div class="testimonial-savings">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Saves ₱11,200/month
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-1">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"We run a small restaurant in Cebu and VECO bills were killing us. SolarPro handled all the permits and our net metering application. Now we actually earn credits some months."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-orange">ML</div>
+          <div>
+            <div class="testimonial-name">Maria Lim</div>
+            <div class="testimonial-location">Cebu City, Cebu</div>
+            <div class="testimonial-savings">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Saves ₱18,400/month
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-2">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="testimonial-quote">"Typhoon Odette damaged our old roof, so we rebuilt and added solar at the same time. The typhoon-rated mounting survived two more typhoons. Zero issues, amazing savings."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-green">JB</div>
+          <div>
+            <div class="testimonial-name">Jose Buenaventura</div>
+            <div class="testimonial-location">Bacolod City, Negros</div>
+            <div class="testimonial-savings">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Saves ₱9,600/month
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-header center fade-up">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Everything You Need to Know</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">How does net metering work in the Philippines?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Under ERC Resolution No. 09, Series of 2013 (implementing RA 9513), any qualified end-user with a renewable energy system up to 100 kWp can participate in net metering. Surplus electricity exported to the grid is credited at the prevailing generation charge. Credits accumulate monthly and are settled in cash annually. We handle the full interconnection application with your distribution utility.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Will solar panels survive Philippine typhoons?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Yes — all our panels are rated for 2,400 Pa wind load (equivalent to ~200 km/h winds). Our mounting systems are engineered to ASCE 7-22 standards and verified against local wind zone maps from PAGASA. We've had zero structural failures across 2,400+ installations including Typhoon Carina (2024) and previous strong typhoons.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">What permits do I need and who processes them?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Required permits include: Building Permit (BPLO), Electrical Permit (local government), Distribution Utility Interconnection Permit, and ERC Net Metering Application. SolarPro PH processes all permits on your behalf as part of the installation package. Timeline is typically 4–8 weeks depending on your distribution utility's processing speed.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Are there tax incentives for solar in the Philippines?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Yes. Under RA 9513 Section 15, solar energy equipment is VAT-exempt. Additionally, income from net metering credits is not subject to income tax for residential users. Commercial and industrial installations may qualify for additional fiscal incentives under the CREATE Act through PEZA or BOI registration depending on project scale.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">How long does installation take?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Physical installation typically takes 1–3 days for residential systems (3–10 kWp). The full timeline from signed contract to grid-connected system is usually 6–10 weeks, with most of that time spent on permit processing. We provide weekly status updates throughout the process.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">What financing options are available?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer-text">We partner with BDO, BPI, and RCBC for solar-specific home improvement loans at preferential rates. SSS and Pag-IBIG members may also access solar financing through their respective home improvement loan programs. Typical loan terms range from 3–10 years. Many customers choose 5-year financing and still see positive cash flow from day one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<span id="contact" aria-hidden="true" style="display:block;height:0;overflow:hidden;"></span>
+<section class="cta-section" id="cta">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="label-md cta-label fade-up">Start Saving Today</div>
+    <h2 class="cta-title fade-up">Ready to Cut Your Electric Bill?</h2>
+    <p class="cta-desc fade-up">Get a free site assessment and detailed savings report — no obligation, no pressure.</p>
+    <div class="cta-actions fade-up">
+      <a href="tel:+639XXXXXXXXX" class="btn-primary" style="font-size:17px;padding:16px 32px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.65 3.4 2 2 0 013.62 1.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.9a16 16 0 006.29 6.29l1.08-.45-.97.88a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.05z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Call Us Now — Free Assessment
+      </a>
+      <a href="#calculator" class="btn-ghost" style="font-size:17px;padding:16px 32px">
+        Use the Calculator First
+      </a>
+    </div>
+    <p class="cta-note fade-up">✓ No hard sell &nbsp;·&nbsp; ✓ Licensed engineers &nbsp;·&nbsp; ✓ Results within 48 hours</p>
+  </div>
+</section>
+
+<!-- ===== ASSESSMENT MODAL ===== -->
+<div class="modal-overlay" id="assessmentModal" onclick="handleOverlayClick(event)">
+  <div class="modal" id="assessmentModalInner">
+    <!-- Progress bar -->
+    <div class="modal-progress-bar">
+      <div class="modal-progress-fill" id="modalProgressFill" style="width:33.33%"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="modal-header">
+      <span class="modal-step-label" id="modalStepLabel">Step 1 of 3</span>
+      <button class="modal-close" onclick="closeAssessmentModal()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- ── STEP 1: Location ── -->
+    <div class="modal-body" id="modalStep1">
+      <h2 class="modal-title">Where is your property located?</h2>
+      <p class="modal-subtitle">We'll tailor your solar proposal to your specific location and sun exposure.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="fieldAddress">Street Address</label>
+        <input type="text" class="form-input" id="fieldAddress" placeholder="e.g. 123 Rizal St, Barangay Pinyahan" autocomplete="street-address">
+        <div class="form-error" id="errAddress">Please enter your property address.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fieldCity">Province / City</label>
+        <select class="form-input" id="fieldCity">
+          <option value="">Select your city or municipality…</option>
+          <optgroup label="── Metro Manila ──">
+            <option>Caloocan</option><option>Las Piñas</option><option>Makati</option>
+            <option>Malabon</option><option>Mandaluyong</option><option>Manila</option>
+            <option>Marikina</option><option>Muntinlupa</option><option>Navotas</option>
+            <option>Parañaque</option><option>Pasay</option><option>Pasig</option>
+            <option>Pateros</option><option>Quezon City</option><option>San Juan</option>
+            <option>Taguig</option><option>Valenzuela</option>
+          </optgroup>
+          <optgroup label="── Luzon ──">
+            <option>Angeles, Pampanga</option><option>Antipolo, Rizal</option>
+            <option>Bacoor, Cavite</option><option>Baguio, Benguet</option>
+            <option>Batangas City</option><option>Biñan, Laguna</option>
+            <option>Cabanatuan, Nueva Ecija</option><option>Cainta, Rizal</option>
+            <option>Calamba, Laguna</option><option>Dasmariñas, Cavite</option>
+            <option>General Trias, Cavite</option><option>Imus, Cavite</option>
+            <option>Laoag, Ilocos Norte</option><option>Legazpi, Albay</option>
+            <option>Lipa, Batangas</option><option>Lucena, Quezon</option>
+            <option>Malolos, Bulacan</option><option>Meycauayan, Bulacan</option>
+            <option>Naga, Camarines Sur</option><option>Olongapo, Zambales</option>
+            <option>San Fernando, Pampanga</option><option>San Jose del Monte, Bulacan</option>
+            <option>San Pedro, Laguna</option><option>Santa Rosa, Laguna</option>
+            <option>Taytay, Rizal</option><option>Vigan, Ilocos Sur</option>
+          </optgroup>
+          <optgroup label="── Visayas ──">
+            <option>Bacolod, Negros Occidental</option><option>Bago, Negros Occidental</option>
+            <option>Bayawan, Negros Oriental</option><option>Cebu City</option>
+            <option>Danao, Cebu</option><option>Dumaguete, Negros Oriental</option>
+            <option>Iloilo City</option><option>Kalibo, Aklan</option>
+            <option>Lapu-Lapu, Cebu</option><option>Maasin, Southern Leyte</option>
+            <option>Mandaue, Cebu</option><option>Ormoc, Leyte</option>
+            <option>Passi, Iloilo</option><option>Roxas City, Capiz</option>
+            <option>Tacloban, Leyte</option><option>Tagbilaran, Bohol</option>
+            <option>Talisay, Cebu</option><option>Tanjay, Negros Oriental</option>
+          </optgroup>
+          <optgroup label="── Mindanao ──">
+            <option>Bayugan, Agusan del Sur</option><option>Bislig, Surigao del Sur</option>
+            <option>Butuan, Agusan del Norte</option><option>Cabadbaran, Agusan del Norte</option>
+            <option>Cagayan de Oro</option><option>Cotabato City</option>
+            <option>Davao City</option><option>Digos, Davao del Sur</option>
+            <option>Dipolog, Zamboanga del Norte</option><option>General Santos City</option>
+            <option>Iligan, Lanao del Norte</option><option>Kidapawan, North Cotabato</option>
+            <option>Koronadal, South Cotabato</option><option>Marawi, Lanao del Sur</option>
+            <option>Pagadian, Zamboanga del Sur</option><option>Surigao, Surigao del Norte</option>
+            <option>Tacurong, Sultan Kudarat</option><option>Tagum, Davao del Norte</option>
+            <option>Tandag, Surigao del Sur</option><option>Zamboanga City</option>
+          </optgroup>
+        </select>
+        <div class="form-error" id="errCity">Please select your city.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Property Type</label>
+        <div class="toggle-group" id="propertyTypeGroup">
+          <button type="button" class="toggle-btn" data-value="House" onclick="selectToggle(this,'propertyTypeGroup')">🏠 House</button>
+          <button type="button" class="toggle-btn" data-value="Condo" onclick="selectToggle(this,'propertyTypeGroup')">🏢 Condo</button>
+          <button type="button" class="toggle-btn" data-value="Business" onclick="selectToggle(this,'propertyTypeGroup')">🏪 Business</button>
+        </div>
+        <div class="form-error" id="errPropertyType">Please select your property type.</div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="modal-btn-next" onclick="nextStep(1)">
+          Continue to Step 2 →
+        </button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Contact Details ── -->
+    <div class="modal-body" id="modalStep2" style="display:none">
+      <h2 class="modal-title">Who should we send the assessment to?</h2>
+      <p class="modal-subtitle">Your details are kept private and never shared with third parties.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="fieldName">Full Name</label>
+        <input type="text" class="form-input" id="fieldName" placeholder="Juan dela Cruz" autocomplete="name">
+        <div class="form-error" id="errName">Please enter your full name.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fieldEmail">Email Address</label>
+        <input type="email" class="form-input" id="fieldEmail" placeholder="juan@example.com" autocomplete="email">
+        <div class="form-error" id="errEmail">Please enter a valid email address.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="fieldPhone">Mobile Number</label>
+        <input type="tel" class="form-input" id="fieldPhone" placeholder="09XX XXX XXXX" autocomplete="tel" maxlength="13">
+        <div class="form-error" id="errPhone">Please enter a valid PH mobile number (09XX XXX XXXX).</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Best Time to Call</label>
+        <div class="toggle-group" id="callTimeGroup">
+          <button type="button" class="toggle-btn" data-value="Morning (8AM–12PM)" onclick="selectToggle(this,'callTimeGroup')">🌅 Morning</button>
+          <button type="button" class="toggle-btn" data-value="Afternoon (1PM–5PM)" onclick="selectToggle(this,'callTimeGroup')">☀️ Afternoon</button>
+          <button type="button" class="toggle-btn" data-value="Evening (6PM–8PM)" onclick="selectToggle(this,'callTimeGroup')">🌆 Evening</button>
+        </div>
+        <div class="form-error" id="errCallTime">Please select your preferred call time.</div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="modal-btn-back" onclick="prevStep(2)">← Back</button>
+        <button type="button" class="modal-btn-next" id="submitBtn" onclick="submitAssessment()">
+          Get My Free Assessment
+        </button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Confirmation ── -->
+    <div class="modal-body" id="modalStep3" style="display:none">
+      <div class="modal-confirm-icon">✓</div>
+      <h2 class="modal-title" style="text-align:center">Your assessment is being prepared!</h2>
+      <p class="modal-subtitle" style="text-align:center">Here's a snapshot of your personalized solar proposal based on your inputs.</p>
+
+      <!-- Summary card -->
+      <div class="modal-summary-card">
+        <div class="modal-summary-hero">
+          <div class="modal-summary-hero-label">25-Year Net Savings</div>
+          <div class="modal-summary-hero-value" id="sumNetSavings">₱0</div>
+        </div>
+        <div class="modal-summary-grid">
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">Monthly Savings</div>
+            <div class="modal-summary-item-value green" id="sumMonthlySavings">₱0</div>
+          </div>
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">Annual Savings</div>
+            <div class="modal-summary-item-value green" id="sumAnnualSavings">₱0</div>
+          </div>
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">System Size</div>
+            <div class="modal-summary-item-value orange" id="sumSystemSize">0 kWp</div>
+          </div>
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">Install Cost</div>
+            <div class="modal-summary-item-value" id="sumInstallCost">₱0</div>
+          </div>
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">Payback Period</div>
+            <div class="modal-summary-item-value" id="sumPayback">0 yrs</div>
+          </div>
+          <div class="modal-summary-item">
+            <div class="modal-summary-item-label">Annual kWh</div>
+            <div class="modal-summary-item-value" id="sumAnnualKwh">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="modal-timeline">
+        <div class="modal-timeline-label">What happens next</div>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-body">
+              <div class="timeline-step-title">Our solar expert reviews your details</div>
+              <div class="timeline-step-time">Today</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green">2</div>
+            <div class="timeline-body">
+              <div class="timeline-step-title">We prepare your personalized proposal</div>
+              <div class="timeline-step-time">Within 24 hours</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green">3</div>
+            <div class="timeline-body">
+              <div class="timeline-step-title">Free on-site assessment scheduled</div>
+              <div class="timeline-step-time">Within 48 hours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="modal-btn-close" onclick="closeAssessmentModal()">
+        Done — Close Window
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="nav-logo-icon">
+            <svg width="36" height="40" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fsg" x1="24" y1="1" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFD60A"/>
+                  <stop offset="100%" stop-color="#F97316"/>
+                </linearGradient>
+                <clipPath id="fhc">
+                  <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5"/>
+                </clipPath>
+              </defs>
+              <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5" fill="#1B2B4B"/>
+              <rect x="0" y="0" width="48" height="27" fill="url(#fsg)" clip-path="url(#fhc)"/>
+              <line x1="2" y1="32" x2="46" y2="32" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#fhc)"/>
+              <line x1="2" y1="39" x2="46" y2="39" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#fhc)"/>
+              <line x1="16" y1="27" x2="16" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#fhc)"/>
+              <line x1="24" y1="27" x2="24" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#fhc)"/>
+              <line x1="32" y1="27" x2="32" y2="53" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" clip-path="url(#fhc)"/>
+              <text x="24" y="36" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,Arial,sans-serif" font-size="18" font-weight="800" fill="white">S</text>
+            </svg>
+          </div>
+          <div>
+            <span class="nav-logo-text">Solar<span>Pro</span> PH</span>
+            <div class="footer-tagline-brand">POWERING SMARTER FUTURES</div>
+          </div>
+        </div>
+        <p class="footer-desc">Premium solar solutions engineered for Philippine conditions. DOE-accredited, ERC-compliant, typhoon-rated.</p>
+        <p class="footer-accred">DOE Accreditation No. RE-2024-XXXX</p>
+        <div class="footer-social">
+          <a class="social-link" href="https://facebook.com/solarproph" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a class="social-link" href="https://linkedin.com/company/solarproph" target="_blank" rel="noopener noreferrer" title="Connect on LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a class="social-link" href="https://youtube.com/@solarproph" target="_blank" rel="noopener noreferrer" title="Subscribe on YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1628"/></svg>
+          </a>
+          <a class="social-link" href="https://instagram.com/solarproph" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Contact Us -->
+      <div>
+        <div class="footer-col-title">Contact Us</div>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="fc-icon">📞</span>
+            <a href="tel:+63288XXXXXX">+63 (2) 8XXX-XXXX</a>
+          </li>
+          <li>
+            <span class="fc-icon">📱</span>
+            <a href="tel:+639XXXXXXXXX">+63 9XX XXX XXXX</a>
+          </li>
+          <li>
+            <span class="fc-icon">✉️</span>
+            <a href="mailto:info@solarproph.com">info@solarproph.com</a>
+          </li>
+          <li>
+            <span class="fc-icon">📍</span>
+            <span>Metro Manila, Philippines</span>
+          </li>
+          <li>
+            <span class="fc-icon">⏰</span>
+            <span>Mon–Sat, 8AM–6PM</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Service Areas -->
+      <div>
+        <div class="footer-col-title">We Serve</div>
+        <ul class="footer-check-list">
+          <li>Meralco Areas (Metro Manila, Rizal, Bulacan, Cavite, Laguna)</li>
+          <li>VECO Areas (Cebu, Mandaue, Lapu-Lapu)</li>
+          <li>Davao Light Areas</li>
+          <li>BLCI / Bacolod Areas</li>
+          <li>CAGELCO Areas</li>
+          <li>Provincial RECs Nationwide</li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Certifications -->
+      <div>
+        <div class="footer-col-title">Certifications</div>
+        <ul class="footer-check-list">
+          <li>DOE-Accredited Solar Installer</li>
+          <li>ERC-Registered</li>
+          <li>DOLE-Compliant</li>
+          <li>ISO 9001 Certified</li>
+          <li>PEC 2017 Compliant</li>
+          <li>25-Year Panel Warranty</li>
+          <li>Net Metering Certified</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2026 SolarPro PH. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="#">Terms of Service</a>
+      </div>
+      <span class="footer-tagline">Made for Philippine Solar 🇵🇭</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Utility lookup — single source of truth for rates + PSH
+const UTILITIES = {
+  meralco: { name: 'Meralco',        rate: 10.45, psh: 4.5 },
+  veco:    { name: 'VECO / Cebu',    rate: 11.20, psh: 4.8 },
+  davao:   { name: 'Davao Light',    rate: 10.10, psh: 5.0 },
+  blci:    { name: 'BLCI / Bacolod', rate: 11.80, psh: 4.7 },
+  cagayan: { name: 'CAGELCO',        rate: 11.50, psh: 4.9 },
+  other:   { name: 'Other / REC',    rate: 11.00, psh: 4.6 },
+};
+
+// Calculator state
+let state = {
+  monthlyBill: 8000,
+  roofArea: 40,
+  rate: 10.45,
+  psh: 4.5,
+  utilityName: 'Meralco',
+  utilityKey: 'meralco',
+};
+
+// Computed results — read by modal on submit
+let calcResults = {
+  monthlySavings: 0, annualSavings: 0, systemSizeKwp: 0,
+  installCost: 0, paybackYears: 0, netSavings25: 0,
+  annualProduction: 0, panels: 0,
+};
+
+// ── Hero card handlers ────────────────────────────────────
+function onHeroBillInput(val) {
+  state.monthlyBill = parseInt(val);
+  const ms = document.getElementById('monthlyBill');
+  if (ms) ms.value = state.monthlyBill;
+  updateCalculator();
+}
+
+function onHeroUtilityChange(utilKey) {
+  const util = UTILITIES[utilKey];
+  if (!util) return;
+  state.utilityKey = utilKey;
+  state.rate = util.rate;
+  state.psh = util.psh;
+  state.utilityName = util.name;
+  document.querySelectorAll('.location-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.utility === utilKey);
+  });
+  const pshEl = document.getElementById('pshDisplay');
+  if (pshEl) pshEl.textContent = state.psh.toFixed(1) + ' hrs/day';
+  updateCalculator();
+}
+
+function heroScrollToCalc() {
+  const el = document.getElementById('calculator');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function heroScrollToHow() {
+  const el = document.getElementById('how-it-works');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function heroScrollToNext() {
+  const el = document.querySelector('.metrics-bar');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Main calc utility selector (also syncs hero) ─────────
+function selectUtility(btn) {
+  document.querySelectorAll('.location-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const utilKey = btn.dataset.utility;
+  const util = UTILITIES[utilKey] || {};
+  state.utilityKey = utilKey;
+  state.rate = parseFloat(btn.dataset.rate);
+  state.psh = parseFloat(btn.dataset.psh);
+  state.utilityName = util.name || btn.querySelector('.location-name').textContent.trim();
+  const heroSel = document.getElementById('heroUtilitySelect');
+  if (heroSel) heroSel.value = utilKey;
+  document.getElementById('pshDisplay').textContent = state.psh.toFixed(1) + ' hrs/day';
+  updateCalculator();
+}
+
+function formatNumber(n) {
+  return Math.round(n).toLocaleString('en-PH');
+}
+
+function updateSliderFill(sliderId, fillId, min, max) {
+  const slider = document.getElementById(sliderId);
+  const fill = document.getElementById(fillId);
+  const pct = ((slider.value - min) / (max - min)) * 100;
+  fill.style.width = pct + '%';
+}
+
+function updateCalculator() {
+  const billSlider = document.getElementById('monthlyBill');
+  const roofSlider = document.getElementById('roofArea');
+
+  state.monthlyBill = parseInt(billSlider.value);
+  state.roofArea = parseInt(roofSlider.value);
+
+  // ── Sync hero card inputs ──
+  const heroBillSlider = document.getElementById('heroBillSlider');
+  if (heroBillSlider && parseInt(heroBillSlider.value) !== state.monthlyBill) {
+    heroBillSlider.value = state.monthlyBill;
+  }
+  updateSliderFill('heroBillSlider', 'heroBillFill', 1000, 50000);
+  const heroBillDisplay = document.getElementById('heroBillDisplay');
+  if (heroBillDisplay) heroBillDisplay.textContent = '₱' + formatNumber(state.monthlyBill);
+
+  // Update main calc displays
+  document.getElementById('billDisplay').textContent = formatNumber(state.monthlyBill);
+  document.getElementById('roofDisplay').textContent = state.roofArea;
+
+  // Update fills
+  updateSliderFill('monthlyBill', 'billFill', 1000, 50000);
+  updateSliderFill('roofArea', 'roofFill', 10, 200);
+
+  // === CALCULATOR LOGIC (PH Market) ===
+  const EFFICIENCY = 0.80;
+  const COST_PER_KWP = 60000;        // ₱/kWp installed (residential, incl. inverter & labor)
+  const ANNUAL_RATE_INCREASE = 0.03;
+  const PANEL_AREA_PER_KWP = 5;      // sqm per kWp (400W panels ~2m²/panel, ~2.5 panels/kWp)
+  const CO2_PER_KWH = 0.7;           // kg CO2/kWh (PH grid emission factor, DOE 2023)
+  const CO2_PER_TREE_PER_YEAR = 22;  // kg CO2 absorbed per tree per year
+
+  // Monthly consumption in kWh
+  const monthlyKwh = state.monthlyBill / state.rate;
+
+  // Daily kWh needed
+  const dailyKwh = monthlyKwh / 30;
+
+  // System size required to cover consumption (no roof cap — physical fit assessed on-site)
+  const systemSizeKwp = dailyKwh / (state.psh * EFFICIENCY);
+
+  // Annual production (kWh)
+  const annualProduction = systemSizeKwp * state.psh * 365 * EFFICIENCY;
+
+  // Monthly production (kWh)
+  const monthlyProduction = annualProduction / 12;
+
+  // Consumption offset (can't save more than bill)
+  const monthlyOffset = Math.min(monthlyProduction, monthlyKwh);
+  const offsetRatio = monthlyOffset / monthlyKwh;
+
+  // Monthly savings (₱)
+  const monthlySavings = monthlyOffset * state.rate;
+
+  // Annual savings (₱)
+  const annualSavings = monthlySavings * 12;
+
+  // Installation cost
+  const installCost = systemSizeKwp * COST_PER_KWP;
+
+  // Simple payback (years)
+  const paybackYears = installCost / annualSavings;
+
+  // 25-year cumulative savings (with rate escalation)
+  let cumulativeSavings = 0;
+  let yearSavings = annualSavings;
+  for (let yr = 1; yr <= 25; yr++) {
+    cumulativeSavings += yearSavings;
+    yearSavings *= (1 + ANNUAL_RATE_INCREASE);
+  }
+  const netSavings25 = cumulativeSavings - installCost;
+
+  // CO2 offset (tons/yr)
+  const co2TonsPerYear = (annualProduction * CO2_PER_KWH) / 1000;
+
+  // Trees equivalent
+  const treesEquiv = Math.round((annualProduction * CO2_PER_KWH) / CO2_PER_TREE_PER_YEAR);
+
+  // Number of panels (400W panels)
+  const panels = Math.ceil(systemSizeKwp * 1000 / 400);
+
+  // Payback bar (max 25 years = 100%)
+  const paybackPct = Math.min((paybackYears / 12) * 100, 100);
+
+  // === UPDATE DOM ===
+  document.getElementById('monthlySavings').textContent = formatNumber(monthlySavings);
+  document.getElementById('annualSavings').textContent = formatNumber(annualSavings);
+  document.getElementById('systemSize').textContent = systemSizeKwp.toFixed(1);
+  document.getElementById('installCost').textContent = formatNumber(installCost);
+  document.getElementById('paybackYears').textContent = paybackYears.toFixed(1);
+  document.getElementById('paybackFill').style.width = paybackPct + '%';
+  document.getElementById('netSavings25').textContent = formatNumber(netSavings25);
+  document.getElementById('co2Offset').textContent = co2TonsPerYear.toFixed(1);
+  document.getElementById('annualProduction').textContent = formatNumber(annualProduction);
+  document.getElementById('treesEquiv').textContent = formatNumber(treesEquiv);
+  document.getElementById('roofPanels').textContent = panels;
+
+  // ── Update hero card metrics ──
+  const hms = document.getElementById('heroMonthlySavings');
+  if (hms) hms.textContent = '₱' + formatNumber(monthlySavings);
+  const has = document.getElementById('heroAnnualSavings');
+  if (has) has.textContent = '₱' + formatNumber(annualSavings);
+  const hp = document.getElementById('heroPayback');
+  if (hp) hp.textContent = paybackYears.toFixed(1) + ' yrs';
+  const hss = document.getElementById('heroSystemSize');
+  if (hss) hss.textContent = systemSizeKwp.toFixed(1) + ' kWp';
+
+  // Store for modal carry-over
+  calcResults = { monthlySavings, annualSavings, systemSizeKwp, installCost, paybackYears, netSavings25, annualProduction, panels };
+}
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Sticky nav
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Init calculator
+updateCalculator();
+
+// ===== ASSESSMENT MODAL =====
+const SUPABASE_URL = 'https://kpraszfwpalnnqaggyoy.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtwcmFzemZ3cGFsbm5xYWdneW95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0MTQwMDMsImV4cCI6MjA5NDk5MDAwM30.6kSrATfLnh0MmNjqg7sBUvbsOztcogUsDtyjoig8fV8';
+
+let currentStep = 1;
+
+function openAssessmentModal() {
+  currentStep = 1;
+  updateModalStep();
+  // Reset step 1 errors
+  ['Address','City','PropertyType'].forEach(f => clearError('err' + f));
+  document.getElementById('assessmentModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAssessmentModal() {
+  document.getElementById('assessmentModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('assessmentModal')) closeAssessmentModal();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeAssessmentModal();
+});
+
+function updateModalStep() {
+  const steps = [1, 2, 3];
+  steps.forEach(n => {
+    const el = document.getElementById('modalStep' + n);
+    if (el) el.style.display = n === currentStep ? 'block' : 'none';
+  });
+  document.getElementById('modalStepLabel').textContent = 'Step ' + currentStep + ' of 3';
+  const pct = (currentStep / 3) * 100;
+  document.getElementById('modalProgressFill').style.width = pct + '%';
+  // Scroll modal to top on step change
+  document.getElementById('assessmentModalInner').scrollTop = 0;
+}
+
+function selectToggle(btn, groupId) {
+  document.querySelectorAll('#' + groupId + ' .toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function getToggleValue(groupId) {
+  const active = document.querySelector('#' + groupId + ' .toggle-btn.active');
+  return active ? active.dataset.value : '';
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = msg; el.classList.add('show'); }
+}
+
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('show');
+}
+
+function setInputError(id, hasError) {
+  const el = document.getElementById(id);
+  if (el) { el.classList.toggle('error', hasError); }
+}
+
+function validateStep1() {
+  let ok = true;
+  const addr = document.getElementById('fieldAddress').value.trim();
+  const city = document.getElementById('fieldCity').value;
+  const ptype = getToggleValue('propertyTypeGroup');
+
+  clearError('errAddress'); clearError('errCity'); clearError('errPropertyType');
+  setInputError('fieldAddress', false); setInputError('fieldCity', false);
+
+  if (!addr) { showError('errAddress', 'Please enter your property address.'); setInputError('fieldAddress', true); ok = false; }
+  if (!city) { showError('errCity', 'Please select your city.'); setInputError('fieldCity', true); ok = false; }
+  if (!ptype) { showError('errPropertyType', 'Please select your property type.'); ok = false; }
+  return ok;
+}
+
+function validateStep2() {
+  let ok = true;
+  const name = document.getElementById('fieldName').value.trim();
+  const email = document.getElementById('fieldEmail').value.trim();
+  const phone = document.getElementById('fieldPhone').value.trim();
+  const callTime = getToggleValue('callTimeGroup');
+
+  clearError('errName'); clearError('errEmail'); clearError('errPhone'); clearError('errCallTime');
+  setInputError('fieldName', false); setInputError('fieldEmail', false); setInputError('fieldPhone', false);
+
+  if (!name || name.length < 2) {
+    showError('errName', 'Please enter your full name.'); setInputError('fieldName', true); ok = false;
+  }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email)) {
+    showError('errEmail', 'Please enter a valid email address.'); setInputError('fieldEmail', true); ok = false;
+  }
+  const phoneCleaned = phone.replace(/[\s\-]/g, '');
+  if (!/^(09\d{9}|\+639\d{9})$/.test(phoneCleaned)) {
+    showError('errPhone', 'Enter a valid PH mobile number (09XX XXX XXXX).'); setInputError('fieldPhone', true); ok = false;
+  }
+  if (!callTime) { showError('errCallTime', 'Please select your preferred call time.'); ok = false; }
+  return ok;
+}
+
+function nextStep(from) {
+  if (from === 1 && !validateStep1()) return;
+  currentStep = from + 1;
+  updateModalStep();
+}
+
+function prevStep(from) {
+  currentStep = from - 1;
+  updateModalStep();
+}
+
+function populateStep3Summary() {
+  document.getElementById('sumNetSavings').textContent = '₱' + formatNumber(calcResults.netSavings25);
+  document.getElementById('sumMonthlySavings').textContent = '₱' + formatNumber(calcResults.monthlySavings);
+  document.getElementById('sumAnnualSavings').textContent = '₱' + formatNumber(calcResults.annualSavings);
+  document.getElementById('sumSystemSize').textContent = calcResults.systemSizeKwp.toFixed(1) + ' kWp';
+  document.getElementById('sumInstallCost').textContent = '₱' + formatNumber(calcResults.installCost);
+  document.getElementById('sumPayback').textContent = calcResults.paybackYears.toFixed(1) + ' yrs';
+  document.getElementById('sumAnnualKwh').textContent = formatNumber(calcResults.annualProduction);
+}
+
+async function submitAssessment() {
+  if (!validateStep2()) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Sending…';
+
+  const payload = {
+    name:            document.getElementById('fieldName').value.trim(),
+    email:           document.getElementById('fieldEmail').value.trim(),
+    phone:           document.getElementById('fieldPhone').value.trim().replace(/[\s\-]/g, ''),
+    address:         document.getElementById('fieldAddress').value.trim(),
+    city:            document.getElementById('fieldCity').value,
+    property_type:   getToggleValue('propertyTypeGroup'),
+    best_time_to_call: getToggleValue('callTimeGroup'),
+    utility:         state.utilityName,
+    monthly_bill:    state.monthlyBill,
+    roof_area:       state.roofArea,
+    system_kw:       parseFloat(calcResults.systemSizeKwp.toFixed(2)),
+    install_cost:    Math.round(calcResults.installCost),
+    monthly_savings: Math.round(calcResults.monthlySavings),
+    annual_savings:  Math.round(calcResults.annualSavings),
+    payback_years:   parseFloat(calcResults.paybackYears.toFixed(2)),
+    savings_25yr:    Math.round(calcResults.netSavings25),
+    annual_kwh:      Math.round(calcResults.annualProduction),
+    panels_needed:   calcResults.panels,
+  };
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error('Supabase error ' + res.status + ': ' + errText);
+    }
+
+    // Success → go to step 3
+    populateStep3Summary();
+    currentStep = 3;
+    updateModalStep();
+
+  } catch (err) {
+    console.error('Assessment submit failed:', err);
+    showError('errCallTime', 'Submission failed. Please try again or call us directly.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Get My Free Assessment';
+  }
+}
+
+// PH phone auto-format: 09XX XXX XXXX
+document.addEventListener('DOMContentLoaded', function() {
+  const phoneInput = document.getElementById('fieldPhone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function() {
+      let digits = this.value.replace(/\D/g, '');
+      if (digits.length > 11) digits = digits.slice(0, 11);
+      if (digits.length >= 8) {
+        this.value = digits.slice(0,4) + ' ' + digits.slice(4,7) + ' ' + digits.slice(7);
+      } else if (digits.length >= 5) {
+        this.value = digits.slice(0,4) + ' ' + digits.slice(4);
+      } else {
+        this.value = digits;
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
