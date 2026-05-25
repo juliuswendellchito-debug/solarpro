@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SolarPro PH — CRM Admin</title>
+<title>Arbee Solar — CRM Admin</title>
 <link rel="manifest" href="/manifest-crm.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="SolarPro CRM">
+<meta name="apple-mobile-web-app-title" content="Arbee Solar CRM">
 <meta name="theme-color" content="#0d1c32">
 <script>
   if ('serviceWorker' in navigator) {
@@ -33,7 +33,7 @@
   --text-dim: #374151;
   --text-muted: #6B7280;
   --text-ultra-muted: #9CA3AF;
-  --orange: #F97316;
+  --orange: #F5A623;
   --green:  #10B981;
   --blue:   #3B82F6;
   --yellow: #D97706;
@@ -500,7 +500,7 @@ tbody tr.active-row { background: #FFF7ED !important; }
           <defs>
             <linearGradient id="lsg" x1="24" y1="1" x2="24" y2="27" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#FFD60A"/>
-              <stop offset="100%" stop-color="#F97316"/>
+              <stop offset="100%" stop-color="#F5A623"/>
             </linearGradient>
             <clipPath id="lhc">
               <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5"/>
@@ -516,11 +516,11 @@ tbody tr.active-row { background: #FFF7ED !important; }
           <text x="24" y="36" text-anchor="middle" dominant-baseline="middle" font-family="Montserrat,Arial,sans-serif" font-size="18" font-weight="800" fill="white">S</text>
         </svg>
       </div>
-      <div class="login-logo-title">Solar<span>Pro</span> PH</div>
+      <div class="login-logo-title">Arbee Solar</div>
       <div class="login-logo-sub">CRM Admin Dashboard</div>
     </div>
     <label class="lbl" for="loginEmail">Email Address</label>
-    <input class="inp" type="email" id="loginEmail" placeholder="admin@solarproph.com" autocomplete="username">
+    <input class="inp" type="email" id="loginEmail" placeholder="admin@arbeesolar.com" autocomplete="username">
     <label class="lbl" for="loginPw">Password</label>
     <input class="inp" type="password" id="loginPw" placeholder="••••••••" autocomplete="current-password">
     <button class="login-btn" id="loginBtn" onclick="doLogin()">Sign In to Dashboard</button>
@@ -539,7 +539,7 @@ tbody tr.active-row { background: #FFF7ED !important; }
           <defs>
             <linearGradient id="ssg" x1="24" y1="1" x2="24" y2="27" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#FFD60A"/>
-              <stop offset="100%" stop-color="#F97316"/>
+              <stop offset="100%" stop-color="#F5A623"/>
             </linearGradient>
             <clipPath id="shc">
               <polygon points="24,1 46,13.5 46,40.5 24,53 2,40.5 2,13.5"/>
@@ -910,7 +910,7 @@ function renderStats() {
 // ─── ANALYTICS BAR ────────────────────────────────────────
 function renderAnalyticsBar() {
   const statuses = ['New','Contacted','Quoted','Closed Won','Closed Lost'];
-  const colors   = { 'New':'#3b82f6','Contacted':'#eab308','Quoted':'#fd761a','Closed Won':'#00c98a','Closed Lost':'#ef4444' };
+  const colors   = { 'New':'#3b82f6','Contacted':'#eab308','Quoted':'#F5A623','Closed Won':'#00c98a','Closed Lost':'#ef4444' };
   const counts   = {};
   statuses.forEach(s => counts[s] = 0);
   leads.forEach(l => {
@@ -1075,11 +1075,11 @@ function openPanel(id) {
 
     const lines = [
       'To: ' + (l.email || ''),
-      'Subject: Your SolarPro PH Solar Assessment — Next Steps',
+      'Subject: Your Arbee Solar Solar Assessment — Next Steps',
       '',
       'Hi ' + (l.name || 'there') + ',',
       '',
-      'Thank you for your interest in SolarPro PH!',
+      'Thank you for your interest in Arbee Solar!',
       '',
       'Based on your solar profile:',
       '',
@@ -1096,8 +1096,8 @@ function openPanel(id) {
       'Please reply or call us to set a schedule.',
       '',
       'Best regards,',
-      'SolarPro PH Team',
-      'info@solarproph.com',
+      'Arbee Solar Team',
+      'info@arbeesolar.com',
       '+63 (2) 8XXX-XXXX'
     ];
 
@@ -1115,7 +1115,7 @@ function openPanel(id) {
         toast('Copy failed: ' + err.message, 'err');
       });
   };
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(l.email)}&su=${encodeURIComponent('Your SolarPro PH Solar Assessment — Next Steps')}`;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(l.email)}&su=${encodeURIComponent('Your Arbee Solar Solar Assessment — Next Steps')}`;
   document.getElementById('pGmailBtn').href = gmailUrl;
   document.getElementById('pStatusSel').value = l.status || 'New';
 
@@ -1255,7 +1255,7 @@ function fmtDateExport(d) {
 }
 
 // ─── HELPERS ──────────────────────────────────────────────
-const AVATAR_COLORS = ['#3b82f6','#fd761a','#00c98a','#8b5cf6','#ec4899','#f59e0b','#14b8a6','#ef4444'];
+const AVATAR_COLORS = ['#3b82f6','#F5A623','#00c98a','#8b5cf6','#ec4899','#f59e0b','#14b8a6','#ef4444'];
 
 function avatarColor(id) { return AVATAR_COLORS[(id || 0) % AVATAR_COLORS.length]; }
 

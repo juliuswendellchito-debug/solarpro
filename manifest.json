@@ -1,6 +1,6 @@
 {
-  "name": "SolarPro",
-  "short_name": "SolarPro",
+  "name": "Arbee Solar",
+  "short_name": "Arbee Solar",
   "description": "Solar savings calculator and lead generation",
   "start_url": "/",
   "display": "standalone",

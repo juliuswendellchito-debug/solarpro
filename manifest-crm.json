@@ -1,7 +1,7 @@
 {
-  "name": "SolarPro CRM",
-  "short_name": "SP CRM",
-  "description": "SolarPro PH CRM Admin Dashboard",
+  "name": "Arbee Solar CRM",
+  "short_name": "AS CRM",
+  "description": "Arbee Solar CRM Admin Dashboard",
   "start_url": "/admin.html",
   "display": "standalone",
   "background_color": "#0d1c32",
